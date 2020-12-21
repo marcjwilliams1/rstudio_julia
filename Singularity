@@ -147,5 +147,4 @@ apt-get update -qq && apt-get -y --no-install-recommends install \
 	mkdir -p /opt/.julia/
 	export JULIA_PKGDIR=/opt/.julia
 
-    julia -e 'using Pkg; Pkg.init()'
 	julia -e 'using Pkg; Pkg.add("Distributions")'
