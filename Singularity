@@ -16,12 +16,6 @@ From: rocker/r-ver:4.0.3
 
   set -e
   apt-get update -qq && apt-get -y --no-install-recommends install \
-	  tar \
-	  gzip \
-	  curl \
-	  git \
-	  openssh-client \
-	  ca-certificates \
       libxml2-dev \
       libbz2-dev \
       zlib1g-dev \
@@ -116,10 +110,19 @@ apt-get update -qq && apt-get -y --no-install-recommends install \
     export JULIA_DEPOT_PATH=/user/.julia
     export PATH=/opt/julia/bin:$PATH
 
+	apt-get update -qq && apt-get -y --no-install-recommends install \
+	  curl \
+	  tar \
+	  gzip \
+	  git \
+	  openssh-client \
+	  ca-certificates \
+	  wget
+
     JULIA_MAJOR=1.5
     JULIA_MINOR=.3
 
-	curl -k https://julialang-s3.julialang.org/bin/linux/x64/$JULIA_MAJOR/julia-$JULIA_MAJOR$JULIA_MINOR-linux-x86_64.tar.gz > julia.tar.gz 
+	wget -O julia.tar.gz "https://julialang-s3.julialang.org/bin/linux/x64/1.5/julia-1.5.3-linux-x86_64.tar.gz"
 	ls -lth julia.tar.gz
     mkdir /opt/julia 
     tar xzf julia.tar.gz -C /opt/julia 
