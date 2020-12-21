@@ -4,6 +4,10 @@ From: rocker/r-ver:4.0.3
 %files
   /rocker_scripts
 
+%environment
+    export JULIA_DEPOT_PATH=$PWD/precompile:/user/.julia
+    export PATH=/opt/julia/bin:$PATH
+
 %post
   export S6_VERSION=v1.21.7.0
   export RSTUDIO_VERSION=1.2.5042
@@ -142,9 +146,10 @@ apt-get update -qq && apt-get -y --no-install-recommends install \
     rm -rf /opt/julia/etc
     rm -rf /opt/julia/include 
 
+	mkdir -p /opt/julia/local/share/julia
     mkdir -p /user/.julia/environments/$JULIA_MAJOR
 	mkdir -p /usr/.julia/
 	mkdir -p /opt/.julia/
-	export JULIA_PKGDIR=/opt/.julia
 
 	julia -e 'using Pkg; Pkg.add("Distributions")'
+	julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/marcjwilliams1/CINulator.jl"))'
