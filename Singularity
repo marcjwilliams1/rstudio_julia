@@ -130,6 +130,8 @@ apt-get update -qq && apt-get -y --no-install-recommends install \
     mv /opt/julia/$(cd /opt/julia; echo julia-*)/* opt/julia/ 
     rm -rf /opt/julia/$(cd /opt/julia; echo julia-*)
 
+	ln -s /opt/julia/bin/julia /usr/local/bin/julia
+
     rm -rf /opt/julia/share/doc 
     rm -rf /opt/julia/share/icons 
     rm -rf /opt/julia/share/appdata
@@ -141,5 +143,9 @@ apt-get update -qq && apt-get -y --no-install-recommends install \
     rm -rf /opt/julia/include 
 
     mkdir -p /user/.julia/environments/$JULIA_MAJOR
+	mkdir -p /usr/.julia/
+	mkdir -p /opt/.julia/
+	export JULIA_PKGDIR=/opt/.julia
 
-    # julia -e 'using Pkg;  Pkg.instantiate();'
+    julia -e 'Pkg.init()'
+	julia -e 'Pkg.add("Distributions")'
