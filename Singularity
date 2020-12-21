@@ -120,6 +120,7 @@ apt-get update -qq && apt-get -y --no-install-recommends install \
     JULIA_MINOR=.3
 
 	curl -k https://julialang-s3.julialang.org/bin/linux/x64/$JULIA_MAJOR/julia-$JULIA_MAJOR$JULIA_MINOR-linux-x86_64.tar.gz > julia.tar.gz 
+	ls -lth julia.tar.gz
     mkdir /opt/julia 
     tar xzf julia.tar.gz -C /opt/julia 
     rm julia.tar.gz 
