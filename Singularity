@@ -128,26 +128,26 @@ apt-get update -qq && apt-get -y --no-install-recommends install \
 
 	wget -O julia.tar.gz "https://julialang-s3.julialang.org/bin/linux/x64/1.5/julia-1.5.3-linux-x86_64.tar.gz"
 	ls -lth julia.tar.gz
-    mkdir /opt/julia 
-    tar xzf julia.tar.gz -C /opt/julia 
-    rm julia.tar.gz 
-    mv /opt/julia/$(cd /opt/julia; echo julia-*)/* opt/julia/ 
+    mkdir /opt/julia
+    tar xzf julia.tar.gz -C /opt/julia
+    rm julia.tar.gz
+    mv /opt/julia/$(cd /opt/julia; echo julia-*)/* opt/julia/
     rm -rf /opt/julia/$(cd /opt/julia; echo julia-*)
 
 	ln -s /opt/julia/bin/julia /usr/local/bin/julia
 
-    rm -rf /opt/julia/share/doc 
-    rm -rf /opt/julia/share/icons 
+    rm -rf /opt/julia/share/doc
+    rm -rf /opt/julia/share/icons
     rm -rf /opt/julia/share/appdata
     rm -rf /opt/julia/share/applications
-    rm -rf /opt/julia/share/man 
-    rm -rf /opt/julia/share/julia/test 
-    rm /opt/julia/LICENSE.md 
+    rm -rf /opt/julia/share/man
+    rm -rf /opt/julia/share/julia/test
+    rm /opt/julia/LICENSE.md
     rm -rf /opt/julia/etc
-    rm -rf /opt/julia/include 
+    rm -rf /opt/julia/include
 
 	mkdir -p /opt/julia/local/share/julia
-    mkdir -p /user/.julia/environments/$JULIA_MAJOR
+  mkdir -p /user/.julia/environments/$JULIA_MAJOR
 	mkdir -p /usr/.julia/
 	mkdir -p /opt/.julia/
 
