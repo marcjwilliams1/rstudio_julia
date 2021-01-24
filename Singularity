@@ -152,5 +152,5 @@ apt-get update -qq && apt-get -y --no-install-recommends install \
 	mkdir -p /opt/.julia/
 
 	julia -e 'using Pkg; Pkg.add("Distributions")'
-	julia -e 'using Pkg; Pkg.add("ApproxBayes.jl")'
+	julia -e 'using Pkg; Pkg.add("ApproxBayes")'
 	julia -e 'using Pkg; Pkg.add(PackageSpec(url="https://github.com/marcjwilliams1/CINulator.jl"))'
